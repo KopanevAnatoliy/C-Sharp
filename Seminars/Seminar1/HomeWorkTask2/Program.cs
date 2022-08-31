@@ -23,6 +23,7 @@ if (inputLineA != null && inputLineB != null)
         Console.WriteLine("Число B: " + inputNumberB + " меньшее");
     }
 
+    else 
     if (inputNumberA < inputNumberB)
     {
         Console.WriteLine("Число A: " + inputNumberA + " меньшее");
