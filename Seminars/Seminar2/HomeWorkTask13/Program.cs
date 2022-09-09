@@ -19,21 +19,21 @@ int ThirdDigitVer1(string inputeLine)
     return result;
 }
 
-// Определяет 3-е число или возращает -1.
-int ThirdDigitVer2(string inputeLine)
-{
-    // Приводим строку к int.
-    int number = int.Parse(inputeLine);
-    // заводим result и приравниваем к -1
-    int result = -1;
-    // Проверяем разрядность числа > 2.
-    if (number > 99)
-    {
-        // Определим третью цифру.
-        result = number / Convert.ToInt32(Math.Pow(10, inputeLine.Length - 3)) % 10;
-    }
-    return result;
-}
+// // Определяет 3-е число или возращает -1.
+// int ThirdDigitVer2(string inputeLine)
+// {
+//     // Приводим строку к int.
+//     int number = int.Parse(inputeLine);
+//     // заводим result и приравниваем к -1
+//     int result = -1;
+//     // Проверяем разрядность числа > 2.
+//     if (number > 99)
+//     {
+//         // Определим третью цифру.
+//         result = number / Convert.ToInt32(Math.Pow(10, inputeLine.Length - 3)) % 10;
+//     }
+//     return result;
+// }
 
 // Считываем строку с консоли.
 string? inputeLine = Console.ReadLine();

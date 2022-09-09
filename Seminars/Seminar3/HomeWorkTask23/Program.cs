@@ -124,7 +124,7 @@ void PrintTableV2(string[] arrRow)
 
     // Разбиваем таблицу для вывода в терминал.
     for (int i = 0; i <= arrRow[0].Length / printSize; i++)
-    {
+    {   
         start = printSize * i;
 
         if (arrRow[0].Length > printSize * (i + 1))
@@ -134,6 +134,7 @@ void PrintTableV2(string[] arrRow)
             stop = (arrRow[0].Length - 1);
             sepLength = stop - printSize * i;
         }
+        if (start == stop) break;
 
         // Выводим строки в виде таблицы.
         PrintSep("=", sepLength);

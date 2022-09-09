@@ -12,7 +12,7 @@ int[] GetCoordinates(string message)
 {
     Console.WriteLine(message);
     int[] result = new int[3];
-
+    
     Regex regex = new Regex(@"-?\d+");
     MatchCollection matches = regex.Matches(Console.ReadLine() ?? "0 0 0");
 
