@@ -1,8 +1,4 @@
-﻿//=================================================================================
-// Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-// 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
-// 6, 1, 33 -> [6, 1, 33]
-//=================================================================================
+﻿
 
 // Метод считывания данных пользователя
 int ReadData(string line)
@@ -20,12 +16,14 @@ int[] GenArr(int arrLen, int arrMin, int arrMax)
 {
     int[] arr = new int[arrLen];
     Random rnd = new Random();
+
     if (arrMin > arrMax)
     {
         int temp = arrMax;
         arrMax = arrMin;
         arrMin = temp;
     }
+
     for (int i = 0; i < arrLen; i++)
     {
         arr[i] = rnd.Next(arrMin, arrMax);
@@ -36,17 +34,35 @@ int[] GenArr(int arrLen, int arrMin, int arrMax)
 // Печать массива
 void PrintArr(int[] arr)
 {
-    Console.Write($"Массив: [{string.Join(", ", arr)}]");
+    Console.WriteLine($"Массив: [{string.Join(", ", arr)}]");
 }
 
+
+int[] NegotivPositivSums(int[] arr)
+{
+    int[] sums = new int[2];
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] > 0)
+        {
+            sums[0] += arr[i];
+        }
+        else
+        {
+            sums[1] += arr[i];
+        }
+
+    }
+    return sums;
+}
 
 // Ввод данных.
 int arrLen = ReadData("Введите размер массива ");
 int arrMin = ReadData("Введите минимальное значение ");
 int arrMax = ReadData("Введите максимальное значение ") + 1;
 
-// Создание массива.
 int[] arr = GenArr(arrLen, arrMin, arrMax);
-
-// Вывод массива.
 PrintArr(arr);
+
+int[] res = NegotivPositivSums(arr);
+PrintArr(res);
