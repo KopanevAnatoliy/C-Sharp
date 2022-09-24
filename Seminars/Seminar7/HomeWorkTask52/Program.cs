@@ -86,6 +86,6 @@ void PrintDiagonalMean(int[,] arr, double[] mean)
 }
 
 
-int[,] arr = Gen2DArr(3, 5, 0, 10);
+int[,] arr = Gen2DArr(10, 10, 0, 10000);
 double[] mean = DiagonalMean(arr);
 PrintDiagonalMean(arr, mean);

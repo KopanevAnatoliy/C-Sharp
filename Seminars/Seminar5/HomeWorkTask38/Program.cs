@@ -54,8 +54,14 @@ int[] InsertSort(int[] arr)
 // Сортировка подсчетом.
 int[] CountSort(int[] arr)
 {
-    int max = arr.Max();
-    int min = arr.Min();
+    int max = arr[0], min = arr[0];
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] > max)
+        max = arr[i];
+        if (arr[i] < min)
+        min = arr[i];
+    }
 
     int[] count = new int[max - min + 1];
     int j = 0;
@@ -73,7 +79,37 @@ int[] CountSort(int[] arr)
             j++;
         }
     }
+    return arr;
+}
 
+
+
+// Сортировка подсчетом.
+int[] CountSortWithDict(int[] arr)
+{
+    Dictionary<int, int> countValues = new Dictionary<int, int>();
+
+    foreach (int item in arr)
+    {
+        if (countValues.ContainsKey(item))
+        {
+            countValues[item]++;
+        }
+        else
+        {
+            countValues.Add(item, 1);
+        }
+    }
+    int i = 0;
+    
+    foreach (var pair in countValues.OrderBy(x => x.Key))
+    {
+        for (int j = 0; j < pair.Value; j++)
+        {
+            arr[i] = pair.Key;
+            i++;
+        }
+    }
     return arr;
 }
 
@@ -81,16 +117,20 @@ int[] CountSort(int[] arr)
 void TimeTest(Func<int[], int[]> Method, int[] arr, string funcName)
 {
     DateTime start = DateTime.Now;
-    Method(arr);
+    for (int i = 0; i < 1; i++)
+    {
+        Method(arr);
+    }
     Console.WriteLine($"Затраченное время метода {funcName}: {(DateTime.Now - start).TotalMilliseconds} ms");
-}  
+}
 
 
-int[] arr = GenArr(10, 0, 5000000);
-PrintArr(arr);
-Console.WriteLine($"Минимальный элемент массива: {arr.Min()}\nМаксимальный элемент массива: {arr.Max()}");
-PrintArr(InsertSort((int[])arr.Clone()), "Массив сортированный методом вставки: ");
-PrintArr(CountSort((int[])arr.Clone()), "Массив сортированный методом подсчета: ");
+int[] arr = GenArr(1000, 0, 10000000);
+// PrintArr(arr);
+// Console.WriteLine($"Минимальный элемент массива: {arr.Min()}\nМаксимальный элемент массива: {arr.Max()}");
+// PrintArr(InsertSort((int[])arr.Clone()), "Массив сортированный методом вставки: ");
+// PrintArr(CountSort((int[])arr.Clone()), "Массив сортированный методом подсчета: ");
+// PrintArr(CountSortWithDict((int[])arr.Clone()), "Массив сортированный методом подсчета: ");
 TimeTest(InsertSort, (int[])arr.Clone(), "InsertSort");
 TimeTest(CountSort, (int[])arr.Clone(), "CountSort");
-
+TimeTest(CountSortWithDict, (int[])arr.Clone(), "CountSortWithDict");
