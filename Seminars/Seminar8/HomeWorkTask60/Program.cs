@@ -9,7 +9,7 @@
 int[,,] Gen3DArr(int rows, int columns, int depth)
 {
     int[,,] arr = new int[rows, columns, depth];
-    List<int> numbs= Enumerable.Range(10, 90).ToList();
+    List<int> numbs = Enumerable.Range(10, 90).ToList();
     Random rnd = new Random();
     int index = 0;
     for (int i = 0; i < rows; i++)
@@ -17,7 +17,7 @@ int[,,] Gen3DArr(int rows, int columns, int depth)
         for (int j = 0; j < columns; j++)
         {
             for (int k = 0; k < depth; k++)
-            {                
+            {
                 index = rnd.Next(numbs.Count);
                 arr[i, j, k] = numbs[index];
                 numbs.RemoveAt(index);
@@ -36,7 +36,7 @@ void Print3DArr(int[,,] arr)
         {
             for (int k = 0; k < arr.GetLength(2); k++)
             {
-                Console.Write($"{arr[i,j,k]}({i},{j},{k})\t");
+                Console.Write($"{arr[i, j, k]}({i},{j},{k})\t");
             }
             Console.WriteLine();
         }
@@ -44,4 +44,4 @@ void Print3DArr(int[,,] arr)
     }
 }
 
-Print3DArr(Gen3DArr(3,3,3));
+Print3DArr(Gen3DArr(3, 3, 3));

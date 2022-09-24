@@ -17,7 +17,6 @@ int[,] Gen2DArr(int rows, int columns, int arrMin, int arrMax)
         arrMax = arrMin;
         arrMin = temp;
     }
-    int range = arrMax - arrMin;
 
     for (int i = 0; i < rows; i++)
     {
