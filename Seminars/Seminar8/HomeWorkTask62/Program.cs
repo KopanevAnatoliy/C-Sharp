@@ -41,28 +41,31 @@ string[,] SpiralArr(int rows, int columns)
     {
         for (int j = 0 + offset; j < arr.GetLength(1) - offset; j++)
         {
-            if (maxValue == value) break;
             arr[offset, j] = value.ToString().PadLeft(2, '0');
             value++;
         }
+        if (maxValue == value) break;
+
         for (int i = 1 + offset; i < arr.GetLength(0) - offset; i++)
         {
-            if (maxValue == value) break;
             arr[i, arr.GetLength(1) - offset - 1] = value.ToString().PadLeft(2, '0');
             value++;
         }
+        if (maxValue == value) break;
+
         for (int j = arr.GetLength(1) - offset - 2; j >= offset; j--)
         {
-            if (maxValue == value) break;
             arr[arr.GetLength(0) - offset - 1, j] = value.ToString().PadLeft(2, '0');
             value++;
         }
+        if (maxValue == value) break;
+
         for (int i = arr.GetLength(0) - offset - 2; i > offset; i--)
         {
-            if (maxValue == value) break;
             arr[i, offset] = value.ToString().PadLeft(2, '0');
             value++;
         }
+        if (maxValue == value) break;
     }
     return arr;
 }
