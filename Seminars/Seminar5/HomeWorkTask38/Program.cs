@@ -82,37 +82,6 @@ int[] CountSort(int[] arr)
     return arr;
 }
 
-
-
-// Сортировка подсчетом.
-int[] CountSortWithDict(int[] arr)
-{
-    Dictionary<int, int> countValues = new Dictionary<int, int>();
-
-    foreach (int item in arr)
-    {
-        if (countValues.ContainsKey(item))
-        {
-            countValues[item]++;
-        }
-        else
-        {
-            countValues.Add(item, 1);
-        }
-    }
-    int i = 0;
-    
-    foreach (var pair in countValues.OrderBy(x => x.Key))
-    {
-        for (int j = 0; j < pair.Value; j++)
-        {
-            arr[i] = pair.Key;
-            i++;
-        }
-    }
-    return arr;
-}
-
 // Метод для замера времени.
 void TimeTest(Func<int[], int[]> Method, int[] arr, string funcName)
 {
@@ -133,4 +102,3 @@ int[] arr = GenArr(1000, 0, 10000000);
 // PrintArr(CountSortWithDict((int[])arr.Clone()), "Массив сортированный методом подсчета: ");
 TimeTest(InsertSort, (int[])arr.Clone(), "InsertSort");
 TimeTest(CountSort, (int[])arr.Clone(), "CountSort");
-TimeTest(CountSortWithDict, (int[])arr.Clone(), "CountSortWithDict");

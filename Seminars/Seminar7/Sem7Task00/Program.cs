@@ -85,10 +85,23 @@ void TimeTest(Func<int[,], int[,]> Method, int[,] arr, string funcName , int cou
 }  
 
 
-int[,] arr = Gen2DArr(10, 10, 0, 10);
 
-TimeTest(EvenToSquere, (int[,])arr.Clone(), "EvenToSquere", 1000000);
-TimeTest(Change2DArray, (int[,])arr.Clone(), "Change2DArray", 1000000);
+HashSet<int> set = new HashSet<int>();
+for (int i = 10; i < 100; i++)
+{
+    set.Add(i);
+}
 
+int[] arr = new int[100];
+arr = set.ToArray();
+for (int i = 0; i < 90; i++)
+{
+    Console.Write($"{set.ElementAt(i)} ");
+}
 
+// foreach (var item in set)
+// {
+//     Console.Write($"{item} ");
+// }
 
+// Console.Write($"{set.GetObjectData(1,1)} ");
